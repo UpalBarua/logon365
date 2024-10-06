@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 120 20% 6%;
+    --foreground: 20 33% 95%;
+
+    --card: 120 20% 6%;
+    --card-foreground: 20 33% 95%;
+
+    --popover: 120 20% 6%;
+    --popover-foreground: 20 33% 95%;
+
+    --primary: 20 33% 95%;
+    --primary-foreground: 20 33% 95%;
+
+    --secondary: 120 8% 15%;
+    --secondary-foreground: 20 33% 95%;
+
+    --muted: 120 8% 15%;
+    --muted-foreground: 20 3% 66%;
+
+    --accent: 14 84% 53%;
+    --accent-foreground: 20 33% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 20 33% 95%;
+
+    --border: 120 8% 15%;
+    --input: 120 8% 15%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.5em;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .grid-container {
+    --padding-inline: 1.5rem;
+    --container-max-width: 70rem;
+
+    display: grid;
+    grid-template-columns:
+      [full-width-start] minmax(var(--padding-inline), 1fr) [content-start] min(
+        100% - (var(--padding-inline) * 2),
+        var(--container-max-width)
+      )
+      [content-end] minmax(var(--padding-inline), 1fr) [full-width-end];
+  }
+
+  .grid-container > :not(.full-width) {
+    grid-column: content;
+  }
+
+  .grid-container > .full-width {
+    grid-column: full-width;
+  }
+}
